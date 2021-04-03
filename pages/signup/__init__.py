@@ -1,7 +1,11 @@
+import logging
 from basetest import User
 from pages.base.elements import InputElement, CheckBoxElement, ButtonElement, ComboBox
 from pages.signup.locators import first_name_locator, last_name_locator, email_locator, password_locator, \
     company_locator, phone_locator, country_locator, agreement_checkbox_locator, signup_button_locator
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 class SignUpPage:
@@ -21,6 +25,7 @@ class SignUpPage:
         self.signup_button = ButtonElement(driver=browser.driver, locator=signup_button_locator)
 
     def signup(self, user: User):
+        LOGGER.info("Signing up..")
         self.first_name.enter_text(user.first_name)
         self.last_name.enter_text(user.last_name)
         self.email.enter_text(user.email)
@@ -30,5 +35,6 @@ class SignUpPage:
         self.phone.enter_text(user.phone)
         self.agreement_check_box.check()
         self.signup_button.click()
+        LOGGER.info("Signup complete.")
 
 

@@ -1,4 +1,9 @@
+import logging
+
 from selenium.webdriver.common.keys import Keys
+
+
+LOGGER = logging.getLogger()
 
 
 class BaseElement:
@@ -10,6 +15,7 @@ class BaseElement:
 class InputElement(BaseElement):
 
     def enter_text(self, text):
+        LOGGER.debug(f"InputElement: entering text '{text}'")
         element = self._driver.find_element(*self.locator)
         element.click()
         element.send_keys(text)
