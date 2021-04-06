@@ -47,7 +47,7 @@ def test_user(test_id):
     return User(
         first_name="Testeriko",
         last_name="Qaisky",
-        email=f"<your email>+{test_id}@gmail.com",  # use the test email
+        email=f"testerikod+{test_id}@gmail.com",  # use the test email
         company="Testing Professionals",
         country="Russia",
         phone="+79207657855",

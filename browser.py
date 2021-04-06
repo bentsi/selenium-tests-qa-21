@@ -46,10 +46,11 @@ class Browser:
             time.sleep(0.5)
         raise Exception(f"JS didn't reach 'complete' state")
 
-    def goto_url(self, url):
+    def goto_url(self, url, wait_till_changes=True):
         LOGGER.info(f"Going to url '{url}'...")
         self.driver.get(url=url)
-        self.wait_till_current_url_changes(url=url)
+        if wait_till_changes:
+            self.wait_till_current_url_changes(url=url)
         self.wait_till_js_loaded()
 
     def close_tab(self):
